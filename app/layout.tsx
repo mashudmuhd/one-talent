@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header, Footer, CursorFollower, QuickConciergeDock } from '../components/site';
+import { Header, Footer, CursorFollower } from '../components/site';
 import { SmoothScroll } from '../components/smooth-scroll';
 import { company } from '../lib/content';
 
@@ -60,7 +60,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Header />
         {children}
         <Footer />
-        <QuickConciergeDock />
       </body>
     </html>
   );
