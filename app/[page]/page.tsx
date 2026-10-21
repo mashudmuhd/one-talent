@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Button, Icon, EmployerCTA, InquiryForm, ContactOptions } from '../../components/site';
-import { services, steps, photos, img } from '../../lib/content';
+import { services, steps, photos, img, company } from '../../lib/content';
 
 const pages: Record<
   string,
@@ -291,10 +291,9 @@ export default async function Page({ params }: { params: Promise<{ page: string 
             You can ask about, correct or request deletion of information you submitted by using the contact form. Include
             your submission reference and use the same contact email so your request can be verified.
           </p>
-          <h3>Before public launch</h3>
+          <h3>Privacy inquiries and contact details</h3>
           <p>
-            Company privacy contact details and a retention schedule will be added before this website opens for public
-            inquiries.
+            For any inquiries regarding privacy or data handling, contact ONE TALENT at <strong>{company.email}</strong>, call <strong>{company.phone}</strong>, or visit our office at {company.location}.
           </p>
         </section>
       )}

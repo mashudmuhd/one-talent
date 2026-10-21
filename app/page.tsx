@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container hero-content">
           <div className="hero-status-tag">
             <span className="dot" />
-            <span>Hire the Right Talent. Build the Right Team. • Dubai, UAE</span>
+            <span>Hire the Right Talent. Build the Right Team. • UAE</span>
           </div>
 
           <h1>
@@ -290,7 +290,7 @@ export default function Home() {
         <div className="container contact-layout">
           <div>
             <span className="eyebrow">
-              <span className="dot" /> RECRUITMENT &amp; WORKFORCE SOLUTIONS · DUBAI, UAE
+              <span className="dot" /> RECRUITMENT &amp; WORKFORCE SOLUTIONS · UAE
             </span>
             <h2>
               Let’s Find Your

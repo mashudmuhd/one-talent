@@ -2,11 +2,11 @@ export const company = {
   name: 'ONE TALENT',
   tagline: 'One Team. The Right Talent.',
   category: 'Recruitment & Workforce Solutions',
-  location: 'Dubai, United Arab Emirates',
-  email: 'info@one-talent.ae',
-  phone: '+971 4 299 9000',
-  whatsapp: '+971 50 123 4567',
-  origin: 'https://one-talent-uae.mashhood-muhd.chatgpt.site',
+  location: 'Al Messaned, Al Bataeh Suburb, Sharjah, United Arab Emirates',
+  email: 'info@onetalent-uae.com',
+  phone: '+971 54 585 6200',
+  whatsapp: '+971 54 585 6200',
+  origin: 'https://one-talent.vercel.app',
 };
 
 export const services = [

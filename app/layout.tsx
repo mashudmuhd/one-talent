@@ -7,7 +7,7 @@ import { company } from '../lib/content';
 export const metadata: Metadata = {
   metadataBase: new URL(company.origin),
   title: {
-    default: 'ONE TALENT | Connecting Businesses With the Right Talent · Dubai, UAE',
+    default: 'ONE TALENT | Connecting Businesses With the Right Talent · UAE',
     template: '%s | ONE TALENT UAE',
   },
   description:

@@ -94,9 +94,9 @@ export function DubaiClock() {
   }, []);
 
   return (
-    <div className="dubai-pill" title="Live Dubai Standard Time (GST • UTC+4)">
+    <div className="dubai-pill" title="Live UAE Standard Time (GST • UTC+4)">
       <span className="pulse-indicator" />
-      <span>Dubai HQ • {timeStr || 'Loading...'}</span>
+      <span>UAE HQ • {timeStr || 'Loading...'}</span>
     </div>
   );
 }
@@ -951,33 +951,49 @@ export function FAQAccordion() {
 }
 
 export function ContactOptions() {
+  const waNumber = company.whatsapp.replace(/[^0-9]/g, '').replace(/^00/, '');
+
   return (
     <div className="contact-options">
-      <div className="contact-hub-card" style={{ padding: '20px', background: 'var(--bg-card)', border: '1px solid var(--border-gold)', borderRadius: 'var(--radius-md)' }}>
-        <div style={{ marginBottom: '16px' }}>
+      <div className="contact-hub-card" style={{ padding: '24px', background: 'var(--bg-card)', border: '1px solid var(--border-gold)', borderRadius: 'var(--radius-md)' }}>
+        <div style={{ marginBottom: '18px' }}>
           <span className="eyebrow" style={{ marginBottom: '6px' }}>
-            <span className="dot" /> DUBAI HEADQUARTERS
+            <span className="dot" /> HEADQUARTERS
           </span>
           <h3 style={{ fontSize: '20px', color: 'var(--text-head)', fontFamily: 'Cormorant Garamond, serif', margin: '4px 0' }}>
             ONE TALENT
           </h3>
-          <p style={{ fontSize: '13px', color: 'var(--gold-light)', margin: '0 0 8px' }}>
+          <p style={{ fontSize: '13px', color: 'var(--gold-light)', margin: '0 0 12px' }}>
             Recruitment &amp; Workforce Solutions
           </p>
-          <p style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--text-body)', margin: 0 }}>
-            <MapPin size={16} style={{ color: 'var(--gold-primary)', flexShrink: 0 }} />
-            <span>Dubai, United Arab Emirates</span>
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: 'var(--text-body)' }}>
+            <p style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', margin: 0 }}>
+              <MapPin size={16} style={{ color: 'var(--gold-primary)', flexShrink: 0, marginTop: '2px' }} />
+              <span>{company.location}</span>
+            </p>
+            <p style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
+              <Phone size={16} style={{ color: 'var(--gold-primary)', flexShrink: 0 }} />
+              <a href={'tel:' + company.phone} style={{ color: 'inherit', textDecoration: 'none' }}>
+                {company.phone}
+              </a>
+            </p>
+            <p style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
+              <Mail size={16} style={{ color: 'var(--gold-primary)', flexShrink: 0 }} />
+              <a href={'mailto:' + company.email} style={{ color: 'inherit', textDecoration: 'none' }}>
+                {company.email}
+              </a>
+            </p>
+          </div>
         </div>
 
-        <div className="button-row" style={{ gap: '10px' }}>
+        <div className="button-row" style={{ gap: '10px', flexWrap: 'wrap' }}>
           <a className="button" style={{ padding: '10px 18px', fontSize: '11px' }} href={'tel:' + company.phone}>
             <Phone size={14} /> Call Us
           </a>
           <a
             className="button secondary"
             style={{ padding: '10px 18px', fontSize: '11px' }}
-            href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, '')}`}
+            href={`https://wa.me/${waNumber}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1087,7 +1103,7 @@ export function InquiryForm({ candidate = false }: { candidate?: boolean }) {
             autoComplete="email"
             required
             maxLength={180}
-            placeholder="you@company.ae"
+            placeholder="you@company.com"
           />
         </label>
         <label>
@@ -1096,7 +1112,7 @@ export function InquiryForm({ candidate = false }: { candidate?: boolean }) {
             name="company"
             required
             maxLength={180}
-            placeholder={isCandidate ? 'Dubai, UAE' : 'e.g. Luxury Resort / Group Name'}
+            placeholder={isCandidate ? 'Sharjah, UAE' : 'e.g. Luxury Resort / Group Name'}
           />
         </label>
         <label>
@@ -1108,7 +1124,7 @@ export function InquiryForm({ candidate = false }: { candidate?: boolean }) {
             required
             minLength={7}
             maxLength={30}
-            placeholder="+971 50 123 4567"
+            placeholder="+971 54 585 6200"
           />
         </label>
 
@@ -1239,12 +1255,14 @@ export function InquiryForm({ candidate = false }: { candidate?: boolean }) {
 }
 
 export function EmployerCTA() {
+  const waNumber = company.whatsapp.replace(/[^0-9]/g, '').replace(/^00/, '');
+
   return (
     <section className="cta-band">
       <div className="container cta-inner">
         <div>
           <span className="eyebrow">
-            <span className="dot" /> RECRUITMENT &amp; WORKFORCE SOLUTIONS · DUBAI, UAE
+            <span className="dot" /> RECRUITMENT &amp; WORKFORCE SOLUTIONS · UAE
           </span>
           <h2>
             Let&apos;s Find Your
@@ -1255,7 +1273,7 @@ export function EmployerCTA() {
             Whether you need one professional or an entire team, ONE TALENT is ready to support your recruitment needs.
           </p>
           <div style={{ marginTop: '14px', fontSize: '13px', color: 'var(--text-body)' }}>
-            <strong style={{ color: 'var(--text-head)' }}>ONE TALENT</strong> · Recruitment &amp; Workforce Solutions · Dubai, United Arab Emirates
+            <strong style={{ color: 'var(--text-head)' }}>ONE TALENT</strong> · Recruitment &amp; Workforce Solutions · {company.location}
           </div>
         </div>
         <div>
@@ -1265,7 +1283,7 @@ export function EmployerCTA() {
             </a>
             <a
               className="button secondary"
-              href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, '')}`}
+              href={`https://wa.me/${waNumber}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1287,6 +1305,8 @@ export function EmployerCTA() {
 }
 
 export function Footer() {
+  const waNumber = company.whatsapp.replace(/[^0-9]/g, '').replace(/^00/, '');
+
   return (
     <footer>
       <div className="container footer-top">
@@ -1298,8 +1318,8 @@ export function Footer() {
           <p style={{ fontSize: '12.5px', color: 'var(--text-lead)', margin: '0 0 14px', letterSpacing: '0.04em' }}>
             Recruitment | Staffing | Hospitality | Events | Workforce Solutions
           </p>
-          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: 0 }}>
-            Dubai, United Arab Emirates
+          <p style={{ fontSize: '12px', color: 'var(--text-muted)', margin: 0, maxWidth: '280px', lineHeight: 1.5 }}>
+            {company.location}
           </p>
           <div style={{ marginTop: '20px' }}>
             <DubaiClock />
@@ -1326,7 +1346,7 @@ export function Footer() {
             </a>
             <a
               className="text-link"
-              href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, '')}`}
+              href={`https://wa.me/${waNumber}`}
               target="_blank"
               rel="noopener noreferrer"
             >

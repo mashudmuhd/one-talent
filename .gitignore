@@ -56,3 +56,6 @@ next-env.d.ts
 /work/
 /.npm-cache/
 *.tsbuildinfo
+
+.vercel
+.env*
