@@ -1366,3 +1366,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export { StaffingServicesSection } from './staffing-services';

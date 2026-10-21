@@ -85,22 +85,133 @@ export const steps = [
   ['Screening & selection', 'Candidates are rigorously assessed against the agreed criteria and standards.'],
   ['Staffing coordination', 'We coordinate deployment and next steps seamlessly with your business.'],
 ];
-export const photos={
+export const photos = {
   /** Real client hospitality photography — enhanced locally */
-  hero:'/photos/chef-plating.jpg',
-  team:'/photos/hotel-corridor.jpg',
-  hotel:'/photos/hotel-corridor.jpg',
-  events:'/photos/restaurant-setup.jpg',
-  business:'/photos/room-service-delivery.jpg',
-  resort:'/photos/restaurant-setup.jpg',
-  dining:'/photos/chef-plating.jpg',
-  gala:'/photos/room-service-cloche.jpg',
+  hero: '/photos/chef-plating.jpg',
+  team: '/photos/hotel-corridor.jpg',
+  hotel: '/photos/hotel-corridor.jpg',
+  events: '/photos/restaurant-setup.jpg',
+  business: '/photos/room-service-delivery.jpg',
+  resort: '/photos/restaurant-setup.jpg',
+  dining: '/photos/chef-plating.jpg',
+  gala: '/photos/room-service-cloche.jpg',
   /** Thumbs for gallery tiles */
-  heroThumb:'/photos/chef-plating-thumb.jpg',
-  teamThumb:'/photos/hotel-corridor-thumb.jpg',
-  eventsThumb:'/photos/restaurant-setup-thumb.jpg',
-  businessThumb:'/photos/room-service-delivery-thumb.jpg',
-  galaThumb:'/photos/room-service-cloche-thumb.jpg',
+  heroThumb: '/photos/chef-plating-thumb.jpg',
+  teamThumb: '/photos/hotel-corridor-thumb.jpg',
+  eventsThumb: '/photos/restaurant-setup-thumb.jpg',
+  businessThumb: '/photos/room-service-delivery-thumb.jpg',
+  galaThumb: '/photos/room-service-cloche-thumb.jpg',
 };
 /** Returns the URL as-is for local assets, or appends Unsplash params if needed */
-export const img=(url:string,_width=1200)=>url;
+export const img = (url: string, _width = 1200) => url;
+
+export interface StaffingServiceItem {
+  id: string;
+  name: string;
+  roleBadge: string;
+  startingPrice: string;
+  priceValue: string;
+  priceUnit: string;
+  description: string;
+  features: string[];
+  icon: 'zap' | 'wine' | 'shield' | 'crown' | 'sparkles';
+  highlight?: boolean;
+}
+
+export const staffingServices: StaffingServiceItem[] = [
+  {
+    id: 'runner',
+    name: 'Runner',
+    roleBadge: 'Rapid Dispatch',
+    startingPrice: '180 AED / Shift',
+    priceValue: '180',
+    priceUnit: 'AED / Shift',
+    description: 'Operational support ensuring rapid service and floor efficiency.',
+    features: ['Quick Response', 'Floor Support', 'Supply Sync'],
+    icon: 'zap',
+  },
+  {
+    id: 'waiter',
+    name: 'Waiter',
+    roleBadge: 'Signature VIP',
+    startingPrice: '450 AED / Shift',
+    priceValue: '450',
+    priceUnit: 'AED / Shift',
+    description: 'Skilled professionals delivering high-end hospitality standards.',
+    features: ['VIP Service', 'Order Management', 'Menu Knowledge'],
+    icon: 'wine',
+    highlight: true,
+  },
+  {
+    id: 'stewards',
+    name: 'Stewards',
+    roleBadge: 'BOH Operations',
+    startingPrice: '160 AED / Shift',
+    priceValue: '160',
+    priceUnit: 'AED / Shift',
+    description: 'Essential back-of-house support for hygiene and organization.',
+    features: ['BOH Hygiene', 'Kitchen Support', 'Safety Focused'],
+    icon: 'shield',
+  },
+  {
+    id: 'hostess',
+    name: 'Hostess',
+    roleBadge: 'Front of House',
+    startingPrice: '105 AED / Hour',
+    priceValue: '105',
+    priceUnit: 'AED / Hour',
+    description: 'Elegant and personable front-of-house guest management.',
+    features: ['Guest Greeting', 'Table Booking', 'Brand Aligned'],
+    icon: 'crown',
+  },
+  {
+    id: 'housekeeping',
+    name: 'Housekeeping',
+    roleBadge: '5-Star Standards',
+    startingPrice: '160 AED / Shift',
+    priceValue: '160',
+    priceUnit: 'AED / Shift',
+    description: 'Meticulous cleaning experts for premium environments.',
+    features: ['5-Star Standards', 'Detail Oriented', 'Reliable Care'],
+    icon: 'sparkles',
+  },
+];
+
+export function buildStaffingWhatsAppMessage(service: StaffingServiceItem): string {
+  return [
+    `Hello ${company.name} Team! 👋`,
+    '',
+    'I would like to inquire about booking your staffing service.',
+    '',
+    '📋 BOOKING INQUIRY',
+    '━━━━━━━━━━━━━━━━━━',
+    '',
+    `👤 Service: ${service.name}`,
+    '',
+    '📝 Service Description:',
+    service.description,
+    '',
+    '✨ Service Includes:',
+    ...service.features.map((f) => `• ${f}`),
+    '',
+    `💰 Starting Price: ${service.startingPrice}`,
+    '',
+    '━━━━━━━━━━━━━━━━━━',
+    '',
+    'I would like to know more about availability and the booking process.',
+    '',
+    'Please share the next steps.',
+    '',
+    'Thank you!',
+  ].join('\n');
+}
+
+export function buildStaffingWhatsAppUrl(
+  service: StaffingServiceItem,
+  rawWhatsappNumber: string = company.whatsapp
+): string | null {
+  const cleanNumber = (rawWhatsappNumber || '').replace(/[^0-9]/g, '').replace(/^00/, '');
+  if (!cleanNumber) return null;
+  const message = buildStaffingWhatsAppMessage(service);
+  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+}

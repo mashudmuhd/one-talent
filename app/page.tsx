@@ -12,7 +12,8 @@ import {
   DubaiClock,
   TestimonialsCarousel,
   FAQAccordion,
-  AnimatedStat
+  AnimatedStat,
+  StaffingServicesSection
 } from '../components/site';
 import { advantages, steps, photos, img } from '../lib/content';
 
@@ -69,6 +70,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* NEW — Ultra-Premium Staffing Services Cards with Direct WhatsApp Booking */}
+      <StaffingServicesSection />
 
       {/* Infinite Sector Marquee Ribbon */}
       <TrustMarquee />
