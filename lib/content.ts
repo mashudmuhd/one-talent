@@ -2,7 +2,7 @@ export const company = {
   name: 'ONE TALENT',
   tagline: 'One Team. The Right Talent.',
   category: 'Recruitment & Workforce Solutions',
-  location: 'Al Messaned, Al Bataeh Suburb, Sharjah, United Arab Emirates',
+  location: '3rd Floor, Al Messaned, Al Bataeh Suburb, Sharjah, United Arab Emirates',
   email: 'info@onetalent-uae.com',
   phone: '+971 54 585 6200',
   whatsapp: '+971 54 585 6200',
